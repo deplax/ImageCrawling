@@ -10,10 +10,18 @@ print "Google Image Crawling --------------------------------------------------"
 
 #검색 문자열을 받는다.
 #중간에 띄어쓰기가 있을 경우 + 처리 필요
-keyword = "아이유"
+keyword = "keep"
+rekeyword = keyword.replace(" ", "+")
+keyword = keyword.replace(" ", "_")
 
 #받은 검색 문자열로 html덩어리를 가져온다.
-url = "https://www.google.com/search?q=" + keyword + "&tbm=isch"
+url = "https://www.google.com/search?q=" + rekeyword + "&tbm=isch"
+hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive'}
 user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36"
 request = urllib2.Request(url)
 request.add_header("User-agent", user_agent)
@@ -34,15 +42,6 @@ if not os.path.isdir(keyword):
     os.mkdir(unicode(keyword))
 
 #리스트를 순회하면서 파일을 저장한다.
-
-hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36',
-       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-       'Accept-Encoding': 'none',
-       'Accept-Language': 'en-US,en;q=0.8',
-       'Connection': 'keep-alive'}
-
-
 for i in range(0, len(title) - 1):
     imgurltrim = imgurls[i].split('?imgurl=')[1].split('&imgrefurl=')[0]
     print str(i) + ' : ' + imgurltrim
