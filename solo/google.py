@@ -10,7 +10,7 @@ print "Google Image Crawling --------------------------------------------------"
 
 #검색 문자열을 받는다.
 #중간에 띄어쓰기가 있을 경우 + 처리 필요
-keyword = "keep"
+keyword = "안녕"
 rekeyword = keyword.replace(" ", "+")
 keyword = keyword.replace(" ", "_")
 
@@ -67,4 +67,9 @@ for i in range(0, len(title) - 1):
         output.write(text)
         output.close()
 
+    print "crawl finish"
+
 #저장한 갯수와 통계를 보여주고 종료한다.
+
+#javascript setposition
+#scroll top
