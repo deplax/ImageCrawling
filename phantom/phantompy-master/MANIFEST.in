@@ -1,0 +1,3 @@
+prune tests
+include lib/* lib/private/* lib/qjson/* CMakeLists.txt
+include build/empty
